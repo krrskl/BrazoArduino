@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">    
+    <title>Brazo</title>
+    <style>
+        .container{
+            margin: auto;
+            height: 100vh;
+            width: 100vh;
+        }
+        button{
+            width: 200px;
+            padding: 0;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input name="anglePinzas" placeholder="0 - 55°" type="number" min="0" max="55">
+        <button id="pinzas" class="waves-effect waves-light btn">Pinzas</button>
+        <input name="rotate" placeholder="0 - 180°" type="number" min="0" max="180">
+        <button id="rotate" class="waves-effect waves-light btn" href="">Rotar</button>
+        <input name="leftUp" type="number" placeholder="0 - 110°" min="0" max="110">
+        <button id="leftUp" class="waves-effect waves-light btn" href="">Motor Izquierdo</button>
+        <input name="rightUp" type="number" placeholder="80 - 120°" min="80" max="120">
+        <button id="rightUp" class="waves-effect waves-light btn" href="">Motor Derecho</button>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#pinzas').click(function(e){
+                e.preventDefault();
+                var anglePinzas = $('input[name="anglePinzas"]').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/prueba",
+                    data: {tipo:"pinzas",anglePinzas:anglePinzas},
+                    success : function(){
+
+                    }
+                })
+            });
+
+            $('#rotate').click(function(e){
+                e.preventDefault();
+                var rotate = $('input[name="rotate"]').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/prueba",
+                    data: {tipo:"rotate",rotate:rotate},
+                    success : function(){
+
+                    }
+                })
+            });
+
+            $('#leftUp').click(function(e){
+                e.preventDefault();
+                var rotate = $('input[name="leftUp"]').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/prueba",
+                    data: {tipo:"leftUp",leftUp:leftUp},
+                    success : function(){
+
+                    }
+                })
+            });
+
+            $('#rightUp').click(function(e){
+                e.preventDefault();
+                var rightUp = $('input[name="rightUp"]').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/prueba",
+                    data: {tipo:"rightUp",rightUp:rightUp},
+                    success : function(){
+
+                    }
+                })
+            });
+        }); 
+    </script>
+</body>
+</html>
